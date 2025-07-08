@@ -1,15 +1,18 @@
+import streamlit as st
 import re
 from urllib.parse import urlparse
 from models.classifier import classify_text
 import string
 import nltk
 from nltk.corpus import stopwords
-try:
-    stopwords.words('english')
-except LookupError:
-    nltk.download('stopwords')
-STOPWORDS = set(stopwords.words("english"))
-
+@st.cache_resource
+def get_stopwords():
+    try:
+        nltk.data.find("corpora/stopwords")
+    except LookupError:
+        nltk.download("stopwords")
+    return stopwords.words("english")
+STOPWORDS= set(get_stopwords())
 def extract_links(description):
     return re.findall(r'https?://[^\s]+', description)
 

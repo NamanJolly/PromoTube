@@ -2,6 +2,8 @@ import streamlit as st
 from searcher import search_videos
 from youtube_fetcher import get_video_description
 from extractor import extract_and_classify
+from extractor import get_stopwords
+get_stopwords()
 st.set_page_config(
     page_title="PromoTube️",
     page_icon="assets/discount.png",  # Or use a file: "assets/favicon.ico"
