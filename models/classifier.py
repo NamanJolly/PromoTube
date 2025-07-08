@@ -1,11 +1,13 @@
 from transformers import pipeline
 import os
-
+import streamlit as st
 
 os.environ["TRANSFORMERS_CACHE"] = "./hf_cache"  # local folder in your project
 
-# Faster model than BART-large-MNLI
-classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+@st.cache_resource
+def load_classifier():
+    return pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+classifier = load_classifier()
 
 CATEGORIES = [
     "Amazon affiliate link",
