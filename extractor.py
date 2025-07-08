@@ -4,6 +4,10 @@ from models.classifier import classify_text
 import string
 import nltk
 from nltk.corpus import stopwords
+try:
+    stopwords.words('english')
+except LookupError:
+    nltk.download('stopwords')
 STOPWORDS = set(stopwords.words("english"))
 
 def extract_links(description):
