@@ -8,7 +8,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
-st.markdown("<h1 style='text-align: center;'>PromoSniffer</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>PromoTube</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>Find hidden promo codes from YouTube videos 🔎💸</p>", unsafe_allow_html=True)
 st.divider()
 

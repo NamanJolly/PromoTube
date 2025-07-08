@@ -1,8 +1,9 @@
 import os, requests
 from dotenv import load_dotenv
-
+import streamlit as st
+api_key = st.secrets["YOUTUBE_API_KEY"]
 load_dotenv()
-API_KEY = os.getenv("YOUTUBE_API_KEY")
+
 
 def search_videos(query, max_results=5):
     url = "https://www.googleapis.com/youtube/v3/search"
@@ -11,7 +12,7 @@ def search_videos(query, max_results=5):
         "q": query,
         "type": "video",
         "maxResults": max_results,
-        "key": API_KEY
+        "key": api_key
     }
     resp = requests.get(url, params=params).json()
     results = []
